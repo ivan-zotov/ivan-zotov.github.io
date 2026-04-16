@@ -1,0 +1,4 @@
+venv/
+Google Chrome for Testing.app/
+__pycache__/
+*.pyc
