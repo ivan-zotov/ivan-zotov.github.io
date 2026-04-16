@@ -2,21 +2,22 @@ import time
 import json
 import pandas as pd
 from selenium import webdriver
-from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+
+options = Options()
+options.add_argument("--headless=new")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+
 import schedule
 import os
 
 os.system("git add .")
 os.system("git commit -m 'update matches'")
 os.system("git push")
-
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium import webdriver
-
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
-
-URL = "https://one-vv0203.com/v3/7001/promo-ipl-india?p=jsz5"
-FILE_NAME = "matches.json"
 
 
 def parse_matches():
