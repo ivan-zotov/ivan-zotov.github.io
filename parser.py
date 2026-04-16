@@ -110,12 +110,5 @@ def update_data():
     print("Готово!")
 
 
-# запуск каждые 4 часа
-schedule.every(4).hours.do(update_data)
-
-# первый запуск сразу
-update_data()
-
-while True:
-    schedule.run_pending()
-    time.sleep(60)
+if __name__ == "__main__":
+    update_data()
