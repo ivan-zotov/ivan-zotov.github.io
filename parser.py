@@ -10,14 +10,10 @@ os.system("git add .")
 os.system("git commit -m 'update matches'")
 os.system("git push")
 
-from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
 
-options = Options()
-options.add_argument("--headless")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-
-driver = webdriver.Chrome(options=options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 
 URL = "https://one-vv0203.com/v3/7001/promo-ipl-india?p=jsz5"
 FILE_NAME = "matches.json"
