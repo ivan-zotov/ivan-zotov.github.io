@@ -5,79 +5,78 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
+
+
+URL = "https://one-vv0203.com/v3/7001/promo-ipl-india?p=jsz5"
+FILE_NAME = "matches.json"
 
 
 def create_driver():
     options = Options()
-
-    # 🔥 ОБЯЗАТЕЛЬНО ДЛЯ GITHUB ACTIONS
     options.add_argument("--headless=new")
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
-    options.add_argument("--remote-debugging-port=9222")
     options.add_argument("--window-size=1920,1080")
 
     service = Service(ChromeDriverManager().install())
-
-    driver = webdriver.Chrome(service=service, options=options)
-    return driver
-
-
-# --- URL ---
-URL = "https://one-vv0203.com/v3/7001/promo-ipl-india?p=jsz5"
-FILE_NAME = "matches.json"
+    return webdriver.Chrome(service=service, options=options)
 
 
 def parse_matches():
     driver = create_driver()
     driver.get(URL)
 
-    time.sleep(10)  # ждём загрузку JS
+    # 🔥 ждём загрузку React приложения
+    WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.TAG_NAME, "body"))
+    )
 
-    matches_data = []
+    time.sleep(5)
 
-    matches = driver.find_elements(By.CSS_SELECTOR, ".calendar-card.calendar-table__item")  # потом уточним селектор
+    # 🔥 прокрутка (часто нужно)
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(5)
 
-    for match in matches:
-        try:
-            text = match.text
+    # 🔥 берём ВСЕ текстовые блоки
+    elements = driver.find_elements(By.XPATH, "//*[text()]")
 
-            # 🔥 ВАЖНО: здесь нужно подогнать под реальную верстку
-            if "vs" in text.lower():
-                lines = text.split("\n")
+    matches = []
 
-                teams = match.find_elements(By.CSS_SELECTOR, ".calendar-card__team-name")
-                team1 = teams[0].text
-                team2 = teams[1].text
+    for el in elements:
+        text = el.text.strip()
 
-                date = match.find_element(By.CSS_SELECTOR, ".calendar-card__date").text
+        # фильтр матчей
+        if " vs " in text.lower():
+            parts = text.split("\n")
 
-                odds_elements = match.find_elements(By.CSS_SELECTOR, ".calendar-card__odd-value")
-                odds = [o.text for o in odds_elements]
+            if len(parts) >= 2:
+                try:
+                    team_line = parts[0]
 
-                matches_data.append({
-                    "team1": team1,
-                    "team2": team2,
-                    "date": date,
-                    "odds": odds
-                })
+                    if "vs" in team_line.lower():
+                        teams = team_line.split("vs")
 
-        except:
-            continue
+                        team1 = teams[0].strip()
+                        team2 = teams[1].strip()
+
+                        matches.append({
+                            "team1": team1,
+                            "team2": team2,
+                            "raw": parts
+                        })
+
+                except:
+                    continue
 
     driver.quit()
 
-    return matches_data
+    print("Найдено матчей:", len(matches))
 
-
-def load_old_data():
-    try:
-        with open(FILE_NAME, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except:
-        return []
+    return matches
 
 
 def save_data(data):
@@ -88,30 +87,8 @@ def save_data(data):
 def update_data():
     print("Обновление данных...")
 
-    new_data = parse_matches()
-    old_data = load_old_data()
-
-    updated = []
-
-    for new_match in new_data:
-        found = False
-
-        for old_match in old_data:
-            if (new_match["team1"] == old_match["team1"] and
-                new_match["team2"] == old_match["team2"]):
-
-                # обновляем коэффициенты
-                old_match["odds"] = new_match["odds"]
-                updated.append(old_match)
-                found = True
-                break
-
-        if not found:
-            # новый матч
-            updated.append(new_match)
-
-    # удаляем завершенные (если нет в новом списке)
-    save_data(updated)
+    data = parse_matches()
+    save_data(data)
 
     print("Готово!")
 
