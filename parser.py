@@ -6,18 +6,22 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
-options = Options()
 
-# 🔥 КРИТИЧНО ДЛЯ GITHUB ACTIONS
-options.add_argument("--headless=new")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-gpu")
-options.add_argument("--remote-debugging-port=9222")
+def create_driver():
+    options = Options()
 
-service = Service(ChromeDriverManager().install())
+    # 🔥 ОБЯЗАТЕЛЬНО ДЛЯ GITHUB ACTIONS
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-gpu")
+    options.add_argument("--remote-debugging-port=9222")
+    options.add_argument("--window-size=1920,1080")
 
-driver = webdriver.Chrome(service=service, options=options)
+    service = Service(ChromeDriverManager().install())
+
+    driver = webdriver.Chrome(service=service, options=options)
+    return driver
 
 
 # --- URL ---
@@ -26,7 +30,7 @@ FILE_NAME = "matches.json"
 
 
 def parse_matches():
-    driver = webdriver.Chrome()
+    driver = create_driver()
     driver.get(URL)
 
     time.sleep(10)  # ждём загрузку JS
