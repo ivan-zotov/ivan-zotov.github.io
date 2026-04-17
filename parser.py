@@ -21,24 +21,30 @@ def parse_matches():
 
             # дата (timestamp → нормальный формат)
             timestamp = match.get("dateOfMatch")
-            date = datetime.fromtimestamp(timestamp).strftime("%Y-%m-%d %H:%M")
+            if timestamp:
+                date = datetime.fromtimestamp(timestamp).strftime("%Y-%m-%d %H:%M")
+            else:
+                date = None
 
-            # коэффициенты
-            odds = []
+            coef_home = None
+            coef_away = None
 
+            # 🔥 ИЩЕМ Winner (а не Победитель!)
             for group in match.get("oddGroups", []):
-                if group.get("name") == "Победитель":
+                if group.get("name") == "Winner":
+
                     for o in group.get("odds", []):
-                        odds.append({
-                            "team": o.get("name"),
-                            "coef": o.get("coefficient")
-                        })
+                        if o.get("outCome") == "1":
+                            coef_home = o.get("coefficient")
+                        elif o.get("outCome") == "2":
+                            coef_away = o.get("coefficient")
 
             matches_data.append({
                 "team1": team1,
                 "team2": team2,
                 "date": date,
-                "odds": odds
+                "coef_home": coef_home,
+                "coef_away": coef_away
             })
 
     print("Найдено матчей:", len(matches_data))
