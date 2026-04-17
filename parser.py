@@ -11,53 +11,50 @@ def parse_matches():
     with sync_playwright() as p:
         browser = p.chromium.launch(
             headless=True,
-            args=[
-                "--no-sandbox",
-                "--disable-dev-shm-usage"
-            ]
+            args=["--no-sandbox"]
         )
 
-        context = browser.new_context(
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
-        )
-
+        context = browser.new_context()
         page = context.new_page()
 
-        # 🔥 ОЧЕНЬ ВАЖНО
+        responses = []
+
+        # 🔥 ПЕРЕХВАТ ВСЕХ API ЗАПРОСОВ
+        def handle_response(response):
+            if "api" in response.url or "event" in response.url:
+                try:
+                    data = response.json()
+                    responses.append(data)
+                except:
+                    pass
+
+        page.on("response", handle_response)
+
         page.goto(URL, timeout=60000)
 
-        # 🔥 ждём загрузку JS
         page.wait_for_load_state("networkidle")
 
-        # 🔥 скролл (данные подгружаются)
-        for _ in range(5):
-            page.mouse.wheel(0, 5000)
-            page.wait_for_timeout(2000)
-
-        # 🔥 берём весь текст страницы
-        content = page.inner_text("body")
-
-        lines = content.split("\n")
-
-        for i in range(len(lines)):
-            line = lines[i].strip()
-
-            if " vs " in line.lower():
-                try:
-                    teams = line.split("vs")
-
-                    team1 = teams[0].strip()
-                    team2 = teams[1].strip()
-
-                    matches.append({
-                        "team1": team1,
-                        "team2": team2
-                    })
-
-                except:
-                    continue
+        # немного ждём
+        page.wait_for_timeout(5000)
 
         browser.close()
+
+    # 🔥 ПАРСИМ ПОЛУЧЕННЫЕ ДАННЫЕ
+    for resp in responses:
+        if isinstance(resp, dict):
+            for key, value in resp.items():
+                if isinstance(value, list):
+                    for item in value:
+                        if isinstance(item, dict):
+                            team1 = item.get("team1") or item.get("home")
+                            team2 = item.get("team2") or item.get("away")
+
+                            if team1 and team2:
+                                matches.append({
+                                    "team1": team1,
+                                    "team2": team2,
+                                    "raw": item
+                                })
 
     print("Найдено матчей:", len(matches))
 
@@ -71,10 +68,8 @@ def save_data(data):
 
 def update_data():
     print("Обновление данных...")
-
     data = parse_matches()
     save_data(data)
-
     print("Готово!")
 
 
