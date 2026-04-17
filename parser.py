@@ -5,8 +5,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -16,57 +14,59 @@ FILE_NAME = "matches.json"
 
 def create_driver():
     options = Options()
-    options.add_argument("--headless=new")
+
+    # 🔥 КЛЮЧЕВОЙ ФИКС: НЕ используем новый headless
+    options.add_argument("--headless=old")
+
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
-    options.add_argument("--window-size=1920,1080")
+
+    # 🔥 маскируем как обычный браузер
+    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36")
 
     service = Service(ChromeDriverManager().install())
-    return webdriver.Chrome(service=service, options=options)
+    driver = webdriver.Chrome(service=service, options=options)
+
+    return driver
 
 
 def parse_matches():
     driver = create_driver()
     driver.get(URL)
 
-    # 🔥 ждём загрузку React приложения
-    WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located((By.TAG_NAME, "body"))
-    )
+    time.sleep(10)
 
-    time.sleep(5)
+    # 🔥 ПРОКРУТКА (обязательно)
+    for _ in range(3):
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(3)
 
-    # 🔥 прокрутка (часто нужно)
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(5)
-
-    # 🔥 берём ВСЕ текстовые блоки
-    elements = driver.find_elements(By.XPATH, "//*[text()]")
+    # 🔥 ищем ВСЕ блоки с текстом
+    elements = driver.find_elements(By.XPATH, "//div")
 
     matches = []
 
     for el in elements:
         text = el.text.strip()
 
-        # фильтр матчей
-        if " vs " in text.lower():
-            parts = text.split("\n")
+        if "vs" in text.lower():
+            lines = text.split("\n")
 
-            if len(parts) >= 2:
+            if len(lines) >= 2:
                 try:
-                    team_line = parts[0]
+                    teams_line = lines[0]
 
-                    if "vs" in team_line.lower():
-                        teams = team_line.split("vs")
+                    if "vs" in teams_line.lower():
+                        parts = teams_line.split("vs")
 
-                        team1 = teams[0].strip()
-                        team2 = teams[1].strip()
+                        team1 = parts[0].strip()
+                        team2 = parts[1].strip()
 
                         matches.append({
                             "team1": team1,
                             "team2": team2,
-                            "raw": parts
+                            "raw": lines
                         })
 
                 except:
