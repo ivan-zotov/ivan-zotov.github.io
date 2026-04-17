@@ -1,353 +1,236 @@
 [
     {
-        "team1": "Мумбаи Индианс",
-        "team2": "Пенджаб Кингз",
-        "date": "",
-        "odds": [
-            "1.84",
-            "1.96"
-        ]
+        "team1": "Gujarat Titans",
+        "team2": "Kolkata Knight Riders",
+        "date": "2026-04-17 17:00",
+        "odds": []
     },
     {
-        "team1": "Гуджарат Тайтенс",
-        "team2": "Калькутта Найт Райдерс",
-        "date": "",
-        "odds": [
-            "1.62",
-            "2.3"
-        ]
+        "team1": "Royal Challengers Bengaluru",
+        "team2": "Delhi Capitals",
+        "date": "2026-04-18 13:00",
+        "odds": []
     },
     {
-        "team1": "Роял Челленджерс Бангалор",
-        "team2": "Дели Кэпиталз",
-        "date": "",
-        "odds": [
-            "1.65",
-            "2.22"
-        ]
+        "team1": "Sunrisers Hyderabad",
+        "team2": "Chennai Super Kings",
+        "date": "2026-04-18 17:00",
+        "odds": []
     },
     {
-        "team1": "Санрайзерс Хайдарабад",
-        "team2": "Ченнаи Супер Кингз",
-        "date": "",
-        "odds": [
-            "1.8",
-            "2"
-        ]
+        "team1": "Kolkata Knight Riders",
+        "team2": "Rajasthan Royals",
+        "date": "2026-04-19 13:00",
+        "odds": []
     },
     {
-        "team1": "Калькутта Найт Райдерс",
-        "team2": "Раджастхан Роялс",
-        "date": "",
-        "odds": [
-            "2.1",
-            "1.73"
-        ]
+        "team1": "Punjab Kings",
+        "team2": "Lucknow Super Giants",
+        "date": "2026-04-19 17:00",
+        "odds": []
     },
     {
-        "team1": "Пенджаб Кингз",
-        "team2": "Лакхнау Супер Джайантс",
-        "date": "",
-        "odds": [
-            "1.75",
-            "2.08"
-        ]
+        "team1": "Gujarat Titans",
+        "team2": "Mumbai Indians",
+        "date": "2026-04-20 17:00",
+        "odds": []
     },
     {
-        "team1": "Гуджарат Тайтенс",
-        "team2": "Мумбаи Индианс",
-        "date": "",
-        "odds": [
-            "2.24",
-            "1.65"
-        ]
+        "team1": "Sunrisers Hyderabad",
+        "team2": "Delhi Capitals",
+        "date": "2026-04-21 17:00",
+        "odds": []
     },
     {
-        "team1": "Санрайзерс Хайдарабад",
-        "team2": "Дели Кэпиталз",
-        "date": "",
-        "odds": [
-            "1.9",
-            "1.9"
-        ]
+        "team1": "Lucknow Super Giants",
+        "team2": "Rajasthan Royals",
+        "date": "2026-04-22 17:00",
+        "odds": []
     },
     {
-        "team1": "Лакхнау Супер Джайантс",
-        "team2": "Раджастхан Роялс",
-        "date": "",
-        "odds": [
-            "2.11",
-            "1.73"
-        ]
+        "team1": "Mumbai Indians",
+        "team2": "Chennai Super Kings",
+        "date": "2026-04-23 17:00",
+        "odds": []
     },
     {
-        "team1": "Мумбаи Индианс",
-        "team2": "Ченнаи Супер Кингз",
-        "date": "",
-        "odds": [
-            "1.6",
-            "2.34"
-        ]
+        "team1": "Royal Challengers Bengaluru",
+        "team2": "Gujarat Titans",
+        "date": "2026-04-24 17:00",
+        "odds": []
     },
     {
-        "team1": "Роял Челленджерс Бангалор",
-        "team2": "Гуджарат Тайтенс",
-        "date": "",
-        "odds": [
-            "1.74",
-            "2.09"
-        ]
+        "team1": "Delhi Capitals",
+        "team2": "Punjab Kings",
+        "date": "2026-04-25 13:00",
+        "odds": []
     },
     {
-        "team1": "Дели Кэпиталз",
-        "team2": "Пенджаб Кингз",
-        "date": "",
-        "odds": [
-            "2.09",
-            "1.74"
-        ]
+        "team1": "Rajasthan Royals",
+        "team2": "Sunrisers Hyderabad",
+        "date": "2026-04-25 17:00",
+        "odds": []
     },
     {
-        "team1": "Раджастхан Роялс",
-        "team2": "Санрайзерс Хайдарабад",
-        "date": "",
-        "odds": [
-            "1.72",
-            "2.12"
-        ]
+        "team1": "Chennai Super Kings",
+        "team2": "Gujarat Titans",
+        "date": "2026-04-26 13:00",
+        "odds": []
     },
     {
-        "team1": "Ченнаи Супер Кингз",
-        "team2": "Гуджарат Тайтенс",
-        "date": "",
-        "odds": [
-            "1.99",
-            "1.82"
-        ]
+        "team1": "Lucknow Super Giants",
+        "team2": "Kolkata Knight Riders",
+        "date": "2026-04-26 17:00",
+        "odds": []
     },
     {
-        "team1": "Лакхнау Супер Джайантс",
-        "team2": "Калькутта Найт Райдерс",
-        "date": "",
-        "odds": [
-            "1.95",
-            "1.85"
-        ]
+        "team1": "Delhi Capitals",
+        "team2": "Royal Challengers Bengaluru",
+        "date": "2026-04-27 17:00",
+        "odds": []
     },
     {
-        "team1": "Дели Кэпиталз",
-        "team2": "Роял Челленджерс Бангалор",
-        "date": "",
-        "odds": [
-            "2.2",
-            "1.67"
-        ]
+        "team1": "Punjab Kings",
+        "team2": "Rajasthan Royals",
+        "date": "2026-04-28 17:00",
+        "odds": []
     },
     {
-        "team1": "Пенджаб Кингз",
-        "team2": "Раджастхан Роялс",
-        "date": "",
-        "odds": [
-            "1.85",
-            "1.95"
-        ]
+        "team1": "Mumbai Indians",
+        "team2": "Sunrisers Hyderabad",
+        "date": "2026-04-29 17:00",
+        "odds": []
     },
     {
-        "team1": "Мумбаи Индианс",
-        "team2": "Санрайзерс Хайдарабад",
-        "date": "",
-        "odds": [
-            "1.59",
-            "2.36"
-        ]
+        "team1": "Gujarat Titans",
+        "team2": "Royal Challengers Bengaluru",
+        "date": "2026-04-30 17:00",
+        "odds": []
     },
     {
-        "team1": "Гуджарат Тайтенс",
-        "team2": "Роял Челленджерс Бангалор",
-        "date": "",
-        "odds": [
-            "2.04",
-            "1.78"
-        ]
+        "team1": "Rajasthan Royals",
+        "team2": "Delhi Capitals",
+        "date": "2026-05-01 17:00",
+        "odds": []
     },
     {
-        "team1": "Раджастхан Роялс",
-        "team2": "Дели Кэпиталз",
-        "date": "",
-        "odds": [
-            "1.8",
-            "2.01"
-        ]
+        "team1": "Chennai Super Kings",
+        "team2": "Mumbai Indians",
+        "date": "2026-05-02 17:00",
+        "odds": []
     },
     {
-        "team1": "Ченнаи Супер Кингз",
-        "team2": "Мумбаи Индианс",
-        "date": "",
-        "odds": [
-            "2.41",
-            "1.57"
-        ]
+        "team1": "Gujarat Titans",
+        "team2": "Punjab Kings",
+        "date": "2026-05-03 17:00",
+        "odds": []
     },
     {
-        "team1": "Гуджарат Тайтенс",
-        "team2": "Пенджаб Кингз",
-        "date": "",
-        "odds": [
-            "1.9",
-            "1.9"
-        ]
+        "team1": "Mumbai Indians",
+        "team2": "Lucknow Super Giants",
+        "date": "2026-05-04 17:00",
+        "odds": []
     },
     {
-        "team1": "Мумбаи Индианс",
-        "team2": "Лакхнау Супер Джайантс",
-        "date": "",
-        "odds": [
-            "1.55",
-            "2.45"
-        ]
+        "team1": "Delhi Capitals",
+        "team2": "Chennai Super Kings",
+        "date": "2026-05-05 17:00",
+        "odds": []
     },
     {
-        "team1": "Дели Кэпиталз",
-        "team2": "Ченнаи Супер Кингз",
-        "date": "",
-        "odds": [
-            "1.95",
-            "1.85"
-        ]
+        "team1": "Sunrisers Hyderabad",
+        "team2": "Punjab Kings",
+        "date": "2026-05-06 17:00",
+        "odds": []
     },
     {
-        "team1": "Санрайзерс Хайдарабад",
-        "team2": "Пенджаб Кингз",
-        "date": "",
-        "odds": [
-            "2.01",
-            "1.8"
-        ]
+        "team1": "Lucknow Super Giants",
+        "team2": "Royal Challengers Bengaluru",
+        "date": "2026-05-07 17:00",
+        "odds": []
     },
     {
-        "team1": "Лакхнау Супер Джайантс",
-        "team2": "Роял Челленджерс Бангалор",
-        "date": "",
-        "odds": [
-            "2.24",
-            "1.65"
-        ]
+        "team1": "Delhi Capitals",
+        "team2": "Kolkata Knight Riders",
+        "date": "2026-05-08 17:00",
+        "odds": []
     },
     {
-        "team1": "Дели Кэпиталз",
-        "team2": "Калькутта Найт Райдерс",
-        "date": "",
-        "odds": [
-            "1.85",
-            "1.95"
-        ]
+        "team1": "Rajasthan Royals",
+        "team2": "Gujarat Titans",
+        "date": "2026-05-09 17:00",
+        "odds": []
     },
     {
-        "team1": "Раджастхан Роялс",
-        "team2": "Гуджарат Тайтенс",
-        "date": "",
-        "odds": [
-            "1.85",
-            "1.95"
-        ]
+        "team1": "Chennai Super Kings",
+        "team2": "Lucknow Super Giants",
+        "date": "2026-05-10 13:00",
+        "odds": []
     },
     {
-        "team1": "Ченнаи Супер Кингз",
-        "team2": "Лакхнау Супер Джайантс",
-        "date": "",
-        "odds": [
-            "1.82",
-            "1.99"
-        ]
+        "team1": "Royal Challengers Bengaluru",
+        "team2": "Mumbai Indians",
+        "date": "2026-05-10 17:00",
+        "odds": []
     },
     {
-        "team1": "Роял Челленджерс Бангалор",
-        "team2": "Мумбаи Индианс",
-        "date": "",
-        "odds": [
-            "1.95",
-            "1.85"
-        ]
+        "team1": "Punjab Kings",
+        "team2": "Delhi Capitals",
+        "date": "2026-05-11 17:00",
+        "odds": []
     },
     {
-        "team1": "Пенджаб Кингз",
-        "team2": "Дели Кэпиталз",
-        "date": "",
-        "odds": [
-            "1.67",
-            "2.2"
-        ]
+        "team1": "Gujarat Titans",
+        "team2": "Sunrisers Hyderabad",
+        "date": "2026-05-12 17:00",
+        "odds": []
     },
     {
-        "team1": "Гуджарат Тайтенс",
-        "team2": "Санрайзерс Хайдарабад",
-        "date": "",
-        "odds": [
-            "1.75",
-            "2.08"
-        ]
+        "team1": "Royal Challengers Bengaluru",
+        "team2": "Kolkata Knight Riders",
+        "date": "2026-05-13 17:00",
+        "odds": []
     },
     {
-        "team1": "Роял Челленджерс Бангалор",
-        "team2": "Калькутта Найт Райдерс",
-        "date": "",
-        "odds": [
-            "1.6",
-            "2.34"
-        ]
+        "team1": "Punjab Kings",
+        "team2": "Mumbai Indians",
+        "date": "2026-05-14 17:00",
+        "odds": []
     },
     {
-        "team1": "Пенджаб Кингз",
-        "team2": "Мумбаи Индианс",
-        "date": "",
-        "odds": [
-            "2.02",
-            "1.79"
-        ]
+        "team1": "Lucknow Super Giants",
+        "team2": "Chennai Super Kings",
+        "date": "2026-05-15 17:00",
+        "odds": []
     },
     {
-        "team1": "Лакхнау Супер Джайантс",
-        "team2": "Ченнаи Супер Кингз",
-        "date": "",
-        "odds": [
-            "1.95",
-            "1.85"
-        ]
+        "team1": "Kolkata Knight Riders",
+        "team2": "Gujarat Titans",
+        "date": "2026-05-16 17:00",
+        "odds": []
     },
     {
-        "team1": "Калькутта Найт Райдерс",
-        "team2": "Гуджарат Тайтенс",
-        "date": "",
-        "odds": [
-            "2.01",
-            "1.8"
-        ]
+        "team1": "Punjab Kings",
+        "team2": "Royal Challengers Bengaluru",
+        "date": "2026-05-17 13:00",
+        "odds": []
     },
     {
-        "team1": "Пенджаб Кингз",
-        "team2": "Роял Челленджерс Бангалор",
-        "date": "",
-        "odds": [
-            "2.01",
-            "1.8"
-        ]
+        "team1": "Delhi Capitals",
+        "team2": "Rajasthan Royals",
+        "date": "2026-05-17 17:00",
+        "odds": []
     },
     {
-        "team1": "Дели Кэпиталз",
-        "team2": "Раджастхан Роялс",
-        "date": "",
-        "odds": [
-            "2.05",
-            "1.77"
-        ]
+        "team1": "Chennai Super Kings",
+        "team2": "Sunrisers Hyderabad",
+        "date": "2026-05-18 17:00",
+        "odds": []
     },
     {
-        "team1": "Ченнаи Супер Кингз",
-        "team2": "Санрайзерс Хайдарабад",
-        "date": "",
-        "odds": [
-            "1.88",
-            "1.92"
-        ]
+        "team1": "Rajasthan Royals",
+        "team2": "Lucknow Super Giants",
+        "date": "2026-05-19 17:00",
+        "odds": []
     }
 ]

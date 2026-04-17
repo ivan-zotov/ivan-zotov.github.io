@@ -1,64 +1,49 @@
+import requests
 import json
-from playwright.sync_api import sync_playwright
+from datetime import datetime
 
-URL = "https://one-vv0203.com/v3/7001/promo-ipl-india?p=jsz5"
+URL = "https://match-storage-partners.top-parser.com/lp-feed?&lang=en&service=PREMATCH&sportId=25&startCoefficient=1.01&tournamentId=41745&endDate=1779213117"
 FILE_NAME = "matches.json"
 
 
 def parse_matches():
-    matches = []
+    response = requests.get(URL)
+    data = response.json()
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True,
-            args=["--no-sandbox"]
-        )
+    matches_data = []
 
-        context = browser.new_context()
-        page = context.new_page()
+    for sport in data.get("feed", []):
+        for match in sport.get("matches", []):
 
-        responses = []
+            # команды
+            team1 = match.get("homeTeamName")
+            team2 = match.get("awayTeamName")
 
-        # 🔥 ПЕРЕХВАТ ВСЕХ API ЗАПРОСОВ
-        def handle_response(response):
-            if "api" in response.url or "event" in response.url:
-                try:
-                    data = response.json()
-                    responses.append(data)
-                except:
-                    pass
+            # дата (timestamp → нормальный формат)
+            timestamp = match.get("dateOfMatch")
+            date = datetime.fromtimestamp(timestamp).strftime("%Y-%m-%d %H:%M")
 
-        page.on("response", handle_response)
+            # коэффициенты
+            odds = []
 
-        page.goto(URL, timeout=60000)
+            for group in match.get("oddGroups", []):
+                if group.get("name") == "Победитель":
+                    for o in group.get("odds", []):
+                        odds.append({
+                            "team": o.get("name"),
+                            "coef": o.get("coefficient")
+                        })
 
-        page.wait_for_load_state("networkidle")
+            matches_data.append({
+                "team1": team1,
+                "team2": team2,
+                "date": date,
+                "odds": odds
+            })
 
-        # немного ждём
-        page.wait_for_timeout(5000)
+    print("Найдено матчей:", len(matches_data))
 
-        browser.close()
-
-    # 🔥 ПАРСИМ ПОЛУЧЕННЫЕ ДАННЫЕ
-    for resp in responses:
-        if isinstance(resp, dict):
-            for key, value in resp.items():
-                if isinstance(value, list):
-                    for item in value:
-                        if isinstance(item, dict):
-                            team1 = item.get("team1") or item.get("home")
-                            team2 = item.get("team2") or item.get("away")
-
-                            if team1 and team2:
-                                matches.append({
-                                    "team1": team1,
-                                    "team2": team2,
-                                    "raw": item
-                                })
-
-    print("Найдено матчей:", len(matches))
-
-    return matches
+    return matches_data
 
 
 def save_data(data):
