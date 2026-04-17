@@ -2,3 +2,4 @@ selenium
 pandas
 schedule
 webdriver-manager
+playwright

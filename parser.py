@@ -1,78 +1,63 @@
-import time
 import json
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-
+from playwright.sync_api import sync_playwright
 
 URL = "https://one-vv0203.com/v3/7001/promo-ipl-india?p=jsz5"
 FILE_NAME = "matches.json"
 
 
-def create_driver():
-    options = Options()
-
-    # 🔥 КЛЮЧЕВОЙ ФИКС: НЕ используем новый headless
-    options.add_argument("--headless=old")
-
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-gpu")
-
-    # 🔥 маскируем как обычный браузер
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36")
-
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=options)
-
-    return driver
-
-
 def parse_matches():
-    driver = create_driver()
-    driver.get(URL)
-
-    time.sleep(10)
-
-    # 🔥 ПРОКРУТКА (обязательно)
-    for _ in range(3):
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(3)
-
-    # 🔥 ищем ВСЕ блоки с текстом
-    elements = driver.find_elements(By.XPATH, "//div")
-
     matches = []
 
-    for el in elements:
-        text = el.text.strip()
+    with sync_playwright() as p:
+        browser = p.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-dev-shm-usage"
+            ]
+        )
 
-        if "vs" in text.lower():
-            lines = text.split("\n")
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36"
+        )
 
-            if len(lines) >= 2:
+        page = context.new_page()
+
+        # 🔥 ОЧЕНЬ ВАЖНО
+        page.goto(URL, timeout=60000)
+
+        # 🔥 ждём загрузку JS
+        page.wait_for_load_state("networkidle")
+
+        # 🔥 скролл (данные подгружаются)
+        for _ in range(5):
+            page.mouse.wheel(0, 5000)
+            page.wait_for_timeout(2000)
+
+        # 🔥 берём весь текст страницы
+        content = page.inner_text("body")
+
+        lines = content.split("\n")
+
+        for i in range(len(lines)):
+            line = lines[i].strip()
+
+            if " vs " in line.lower():
                 try:
-                    teams_line = lines[0]
+                    teams = line.split("vs")
 
-                    if "vs" in teams_line.lower():
-                        parts = teams_line.split("vs")
+                    team1 = teams[0].strip()
+                    team2 = teams[1].strip()
 
-                        team1 = parts[0].strip()
-                        team2 = parts[1].strip()
-
-                        matches.append({
-                            "team1": team1,
-                            "team2": team2,
-                            "raw": lines
-                        })
+                    matches.append({
+                        "team1": team1,
+                        "team2": team2
+                    })
 
                 except:
                     continue
 
-    driver.quit()
+        browser.close()
 
     print("Найдено матчей:", len(matches))
 
