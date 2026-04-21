@@ -3,15 +3,15 @@
         "team1": "Lucknow Super Giants",
         "team2": "Rajasthan Royals",
         "date": "2026-04-22 14:00",
-        "coef_home": 2.2,
-        "coef_away": 1.67
+        "coef_home": 2.22,
+        "coef_away": 1.66
     },
     {
         "team1": "Mumbai Indians",
         "team2": "Chennai Super Kings",
         "date": "2026-04-23 14:00",
-        "coef_home": 1.6,
-        "coef_away": 2.34
+        "coef_home": 1.59,
+        "coef_away": 2.36
     },
     {
         "team1": "Royal Challengers Bengaluru",
