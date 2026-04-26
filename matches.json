@@ -17,8 +17,8 @@
         "team1": "Delhi Capitals",
         "team2": "Royal Challengers Bengaluru",
         "date": "2026-04-27 14:00",
-        "coef_home": 2.22,
-        "coef_away": 1.65
+        "coef_home": 2.16,
+        "coef_away": 1.7
     },
     {
         "team1": "Punjab Kings",
@@ -52,8 +52,15 @@
         "team1": "Chennai Super Kings",
         "team2": "Mumbai Indians",
         "date": "2026-05-02 14:00",
-        "coef_home": 2.41,
-        "coef_away": 1.57
+        "coef_home": 2.34,
+        "coef_away": 1.6
+    },
+    {
+        "team1": "Sunrisers Hyderabad",
+        "team2": "Kolkata Knight Riders",
+        "date": "2026-05-03 10:00",
+        "coef_home": 1.67,
+        "coef_away": 2.2
     },
     {
         "team1": "Gujarat Titans",
