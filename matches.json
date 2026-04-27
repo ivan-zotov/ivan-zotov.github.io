@@ -3,8 +3,8 @@
         "team1": "Punjab Kings",
         "team2": "Rajasthan Royals",
         "date": "2026-04-28 14:00",
-        "coef_home": 1.71,
-        "coef_away": 2.14
+        "coef_home": 1.64,
+        "coef_away": 2.26
     },
     {
         "team1": "Mumbai Indians",
@@ -17,8 +17,8 @@
         "team1": "Gujarat Titans",
         "team2": "Royal Challengers Bengaluru",
         "date": "2026-04-30 14:00",
-        "coef_home": 2.04,
-        "coef_away": 1.78
+        "coef_home": 2.22,
+        "coef_away": 1.65
     },
     {
         "team1": "Rajasthan Royals",
@@ -45,8 +45,8 @@
         "team1": "Gujarat Titans",
         "team2": "Punjab Kings",
         "date": "2026-05-03 14:00",
-        "coef_home": 1.9,
-        "coef_away": 1.9
+        "coef_home": 2.15,
+        "coef_away": 1.7
     },
     {
         "team1": "Mumbai Indians",
