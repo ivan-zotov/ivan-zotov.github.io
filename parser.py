@@ -2,7 +2,7 @@ import requests
 import json
 from datetime import datetime
 
-URL = "https://match-storage-partners.top-parser.com/lp-feed?&lang=en&service=PREMATCH&sportId=25&startCoefficient=1.01&tournamentId=41745&endDate=1779213117"
+URL = "https://match-storage-partners.top-parser.com/lp-feed?&lang=en&service=PREMATCH&sportId=25&startCoefficient=1.01&tournamentId=41745&endDate=1781905578"
 FILE_NAME = "matches.json"
 
 
