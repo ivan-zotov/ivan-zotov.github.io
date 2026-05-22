@@ -3,15 +3,15 @@
         "team1": "Sunrisers Hyderabad",
         "team2": "Royal Challengers Bengaluru",
         "date": "2026-05-22 14:00",
-        "coef_home": 1.95,
-        "coef_away": 1.85
+        "coef_home": 2,
+        "coef_away": 1.81
     },
     {
         "team1": "Lucknow Super Giants",
         "team2": "Punjab Kings",
         "date": "2026-05-23 14:00",
-        "coef_home": 2.28,
-        "coef_away": 1.63
+        "coef_home": 2.25,
+        "coef_away": 1.64
     },
     {
         "team1": "Mumbai Indians",
