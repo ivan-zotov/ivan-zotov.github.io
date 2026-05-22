@@ -19,5 +19,12 @@
         "date": "2026-05-24 14:00",
         "coef_home": 1.74,
         "coef_away": 2.06
+    },
+    {
+        "team1": "Royal Challengers Bengaluru",
+        "team2": "Gujarat Titans",
+        "date": "2026-05-26 14:00",
+        "coef_home": 1.81,
+        "coef_away": 2
     }
 ]
