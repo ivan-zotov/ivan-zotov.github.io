@@ -5,5 +5,12 @@
         "date": "2026-05-26 14:00",
         "coef_home": 1.81,
         "coef_away": 2
+    },
+    {
+        "team1": "Sunrisers Hyderabad",
+        "team2": "Rajasthan Royals",
+        "date": "2026-05-27 14:00",
+        "coef_home": 1.74,
+        "coef_away": 2.06
     }
 ]
