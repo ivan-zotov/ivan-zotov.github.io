@@ -1,12 +1,5 @@
 [
     {
-        "team1": "Mumbai Indians",
-        "team2": "Rajasthan Royals",
-        "date": "2026-05-24 10:00",
-        "coef_home": 1.93,
-        "coef_away": 1.87
-    },
-    {
         "team1": "Kolkata Knight Riders",
         "team2": "Delhi Capitals",
         "date": "2026-05-24 14:00",
