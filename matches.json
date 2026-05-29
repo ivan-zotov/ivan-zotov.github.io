@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "team1": "Royal Challengers Bengaluru",
+        "team2": "Gujarat Titans",
+        "date": "2026-05-31 14:00",
+        "coef_home": 1.81,
+        "coef_away": 2
+    }
+]
